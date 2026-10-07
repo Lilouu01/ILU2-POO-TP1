@@ -10,16 +10,7 @@ public class Village {
 	private int nbVillageois = 0;
 	private Marche marche;
 
-	public static class VillageSansChefException extends Exception {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-
-		public VillageSansChefException(String message) {
-			super(message);
-		}
-	}
+	
 
 	private static class Marche {
 		private Etal[] etals;
@@ -53,8 +44,7 @@ public class Village {
 				}
 			}
 			Etal[] etalsProduit = new Etal[nbEtalProduit];
-			int indice = 0;
-			for (int i = 0; i < etals.length; i++) {
+			for (int i = 0, indice = 0; i < etals.length; i++) {
 				if (etals[i].isEtalOccupe() && etals[i].contientProduit(produit)) {
 					etalsProduit[indice] = etals[i];
 					indice++;
@@ -83,8 +73,9 @@ public class Village {
 				}
 			}
 			if (nbEtalVide > 0) {
-				chaine.append("Il reste " + nbEtalVide
-						+ " étals non utilisés dans le marché.\n");
+				chaine.append("Il reste ");
+				chaine.append(nbEtalVide);
+				chaine.append(" étals non utilisés dans le marché.\n");
 			}
 			return chaine.toString();
 		}
@@ -117,7 +108,8 @@ public class Village {
 		}
 		for (int i = 0; i < nbVillageois; i++) {
 			Gaulois gaulois = villageois[i];
-			if (gaulois.getNom().equals(nomGaulois)) {
+			String nomGauloisTableau = gaulois.getNom();
+			if (nomGauloisTableau != null && nomGauloisTableau.equals(nomGaulois)) {
 				return gaulois;
 			}
 		}

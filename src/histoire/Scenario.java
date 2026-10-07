@@ -5,7 +5,7 @@ import personnages.Druide;
 import personnages.Gaulois;
 import villagegaulois.Etal;
 import villagegaulois.Village;
-import villagegaulois.Village.VillageSansChefException;
+import villagegaulois.VillageSansChefException;
 
 public class Scenario {
 
